@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,24 +10,222 @@
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+      :root {
+          --color_desaturatedRed: hsl(0, 36%, 70%);
+          --color_softRed: hsl(0, 93%, 68%);
+          --color_darkGrayishRed: hsl(0, 6%, 24%);
+          --color_pinkGray: hsl(0, 20%, 85%);
+          --color_softRedShadow: hsla(0, 25%, 68%, 0.5);
+          --color_softRedShadowClick: hsla(0, 25%, 68%, 0.7);
+      }
+
+      @font-face {
+          font-family: Josefin;
+          src: url("fonts/JosefinSans-VariableFont_wght.ttf");
+      }
+
+      .main-body-flex {
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+      }
+
+      .main-container {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-content: center;
+          width: 75%;
+          margin-top: 5%;
+          margin-bottom: 20%;
+      }
+
+      .content-container {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-content: center;
+          background-image: linear-gradient(135deg, hsla(0, 0%, 100%, 0.25), hsla(0, 100%, 98%, 0.25)), url(images/bg-pattern-desktop.svg);
+          background-repeat: no-repeat;
+          position:relative;
+      }
+
+      p.header, p.header-highlight {
+          text-transform: uppercase;
+          font-size: 65px;
+          letter-spacing:0.4em;
+      }
+
+      p.header {
+          font-family: Josefin;
+          color: var(--color_darkGrayishRed);
+          font-weight: 600;
+      }
+
+      p.header-highlight {
+          font-family: Josefin;
+          color: var(--color_desaturatedRed);
+          font-weight: 300;
+      }
+
+      p.content {
+          font-family: Josefin;
+          color: var(--color_desaturatedRed);
+          font-size: 16px;
+          font-weight: 400;
+          word-spacing:0.5em;
+          line-height:26px;
+      }
+
+      .content-margin{
+          margin: 0px 150px;
+      }
+
+      input.email-block {
+          border-radius: 30px;
+          height: 30px;
+          border: 2px solid var(--color_pinkGray);
+          color: var(--color_desaturatedRed);
+          font-family: Josefin;
+          font-weight: 400;
+          font-size:16px;
+          padding:10px 0px 10px 40px;
+          position:absolute;
+          right:0px;
+          width:92%;
+      }
+
+      input.email-block:focus{
+          outline: 2px solid var(--color_desaturatedRed);
+      }
+
+      button.submit-button {
+          border-radius: 30px;
+          height: 54px;
+          background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+          padding: 15px 45px 10px 45px;
+          margin: auto;
+          border: none;
+          cursor: pointer;
+          z-index: 4;
+          position: absolute;
+          right: 0px;
+          box-shadow: 0 10px 20px var(--color_softRedShadow);
+      }
+
+    button.submit-button:active {
+        background: linear-gradient(135deg, hsl(0, 80%, 94%), hsl(0, 74%, 82%));
+        box-shadow: 0 10px 20px var(--color_softRedShadowClick);
+    }
+
+      img.warning {
+          z-index:4;
+          position: absolute;
+          top:15px;
+          right:114px;
+          visibility:hidden;
+      }
+
+      p.warning {
+          position: absolute;
+          top: 45px;
+          left: 40px;
+          font-family: Josefin;
+          font-weight:400;
+          color: var(--color_softRed);
+          font-size: 14px;
+          visibility:hidden;
+      }
+
+      div.email-parent-block{
+          position:relative;
+      }
+
+      img.mobile{
+          width:0%;
+          height:0%;
+          margin:0px;
+      }
+
+      img.web{
+          width:auto;
+          height:auto;
+      }
+
+      @media(max-width:800px){
+          img.mobile {
+              width: auto;
+              height: auto;
+              margin: 150px 100px 50px 100px;
+          }
+
+          img.web {
+              width: 0%;
+              height: 0%;
+          }
+      }
+
+    .attribution { font-size: 11px; text-align: center; color:var(--color_darkGrayishRed)}
+      .attribution a {
+          color: var(--color_desaturatedRed);
+      }
   </style>
 </head>
 <body>
-
-  We're coming soon
-
-  Hello fellow shoppers! We're currently building our new fashion store. 
-  Add your email below to stay up-to-date with announcements and our launch deals.
-
-  Email Address
+    <div class="main-body-flex">
+        <div class="main-container">
+            <div class="content-container">
+                <img class="content-margin" src="images/logo.svg" style="width:159px;height:34px;position:absolute;top:50px;"/>
+                <img class="mobile" src="images/hero-mobile.jpg"/>
+                <p class="header-highlight content-margin">
+                    We're
+                </p>
+                <p class="header content-margin" style="margin-top:-5px">
+                    coming
+                </p>
+                <p class="header content-margin">
+                    soon
+                </p>
+                <p class="content content-margin" style="margin-top:20px">
+                    Hello fellow shoppers! We're currently building our new fashion store.
+                    Add your email below to stay up-to-date with announcements and our launch deals.
+                </p>
+                <div class="email-parent-block content-margin" style="margin-top:50px">
+                    <input class="email-block" type="email" id="email" name="email" placeholder="Email Address">
+                    <button class="submit-button" onclick="onButtonClick()">
+                        <img src="images/icon-arrow.svg"/>
+                    </button>
+                    <img id="errorIcon" class="warning" src="images/icon-error.svg" />
+                    <p id="errorText" class="warning">Please provide a valid email</p>
+                </div>
+            </div>
+            <img class="web" src="images/hero-desktop.jpg"/>
+        </div>
+    </div>
   
-  <footer>
-    <p class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Your Name Here</a>.
-    </p>
-  </footer>
+    <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://www.linkedin.com/in/donghyuk-kim/">John Kim</a>.
+    </div>
+
+    <script>
+        function onButtonClick() {
+            var email = document.getElementById('email').value;
+            if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)){
+                document.getElementById("errorText").style.visibility = "hidden";
+                document.getElementById("errorIcon").style.visibility = "hidden";
+                document.getElementById("email").style.border = "2px solid var(--color_pinkGray)";
+
+            } else {
+                document.getElementById("errorText").style.visibility = "visible";
+                document.getElementById("errorIcon").style.visibility = "visible";
+                document.getElementById("email").style.border = "2px solid var(--color_softRed)";
+            }
+                
+        }
+
+    </script>
 </body>
 </html>
